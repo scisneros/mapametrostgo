@@ -1,0 +1,356 @@
+body {
+	margin: 48px 16px;
+	color: #231F20;
+	font-family: Roboto Condensed,sans-serif;
+}
+
+.title {
+	text-align: center;
+	font-size: 3rem;
+	font-weight: bold;
+    line-height: 0.9em;
+    margin-bottom: 20px;
+}
+.title .subtitle {
+	display: block;
+	font-size: 2.3rem;
+	font-weight: 300;
+}
+
+p.intro {
+	text-align: center;
+	font-size: 1rem;
+	font-style: italic;
+	margin: 4px auto;
+	max-width: 800px;
+}
+
+.intro-container {
+	margin-bottom: 12px
+}
+p.intro.credits {
+	font-size: 0.9rem;
+	margin: 0 auto;
+}
+p.intro a {
+	color: #231F20;
+}
+p.intro i {
+	opacity: 0.4;
+	cursor: pointer;
+}
+p.intro i:hover {
+	opacity: 1;
+}
+
+.loading-spinner {
+	display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 8px;
+    vertical-align: text-bottom;
+    border: .2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spin .75s linear infinite;
+    animation: spin .75s linear infinite;
+}
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+.last-update {
+	font-size: 1.4rem;
+	text-align: center;
+    color: #00b3ab;
+}
+
+.legend-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 200px;
+    background-color: #ECEDEE;
+    border-radius: 8px;
+    margin: 8px;
+    padding: 16px 8px;
+    box-sizing: border-box;
+}
+
+p.legend-title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 0.3em 0;
+    line-height: 1;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 2px 17px;
+}
+
+p.legend-label {
+    margin: 0;
+    line-height: 1;
+}
+p.legend-cerrada {
+	color: #848484;
+}
+
+svg.legend-symbol {
+    margin-right: 8px;
+    min-width: 25px;
+}
+
+.svg-overflower {
+	overflow: auto;
+	margin: 8px 0 24px;
+}
+.svg-container {
+	width: 800px;
+	margin: 0 auto;
+}
+@media (min-width: 900px) {
+	.svg-container {
+		width: 1250px;
+	}
+}
+@media (min-width: 1500px) {
+	.svg-container {
+		width: 1700px;
+	}
+}/*
+svg .estacion .marcador {  
+    transform-box: fill-box;
+}
+*/
+
+#svg-map {display: none;}
+#svg-lineas {display: block;}
+
+.linea-circle {
+	stroke: none;
+}
+.linea-label {
+	font-size: 33.6386px;
+	font-weight: bold;
+	fill: white;
+	stroke: none;
+	cursor: default;
+}
+
+.linea {
+	fill: none;
+	stroke-width: 9;
+	stroke-linecap: round;
+	stroke-miterlimit:10;
+	cursor: pointer
+}
+
+.linea-cerrada {
+	stroke-width: 6;
+}
+
+.estacion {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: pointer;
+}
+.estacion .hitbox {
+	fill: transparent;
+	stroke: none;
+}
+.estacion .marcador {
+	transition: 150ms transform ease-out;
+}
+.estacion .borde {
+	stroke: none;
+}
+.estacion .relleno {
+	fill: white;
+	stroke: none;
+}
+.estacion .tachado {
+	stroke-width: 3px;
+}
+.estacion .cierreTemporal {
+	fill: none;
+	stroke: red;
+	stroke-width: 5px;
+	stroke-dasharray: 12.252, 8.168;
+	animation-name: dashOffset;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+@keyframes dashOffset {
+  from {stroke-dashoffset: 0;}
+  to {stroke-dashoffset: 100;}
+}
+
+.nombre {
+    font-size: 1.075rem;
+	fill: #231F20;
+	stroke: none;
+	letter-spacing: -0.7px;
+	transition: font-size 150ms ease-out, font-weight 150ms ease-out;
+	cursor: pointer;
+}
+.nombre.nombre-hover {
+    font-size: 1.3rem;
+	font-weight: bold;
+}
+.est-cerrada .nombre {
+	fill: #D1D1D1;
+}
+
+.estacion .combinacion-circle {
+	stroke: none;
+}
+.estacion .combinacion-label {
+    font-size: 14px;
+    font-weight: bold;
+    fill: white;
+    stroke: none;
+}
+
+.estacion .extra-text {
+    font-size: 16px;
+    font-weight: lighter;
+    font-style: italic;
+	letter-spacing: -0.5px;
+    stroke: none;
+}
+
+.LNeutra {
+	fill:#231F20;stroke:#231F20;
+}
+.LNeutra .linea-cerrada,
+.LNeutra .est-cerrada:not(.comb-abierta),
+.estacion.LNeutra.est-cerrada:not(.comb-abierta),
+.LNeutra.combinacion.comb-cerrada .combinacion-circle {
+	fill:#A4A4A4;stroke:#A4A4A4;
+}
+
+.L1 {
+	fill:#E11F26;stroke:#E11F26;
+}
+.L1 .linea-cerrada,
+.L1 .est-cerrada:not(.comb-abierta),
+.estacion.L1.est-cerrada:not(.comb-abierta),
+.L1.combinacion.comb-cerrada .combinacion-circle {
+	fill:#F5BDBF;stroke:#F5BDBF;
+}
+
+.L2 {
+	fill:#F6951E;stroke:#F6951E;
+}
+.L2 .linea-cerrada,
+.L2 .est-cerrada:not(.comb-abierta),
+.estacion.L2.est-cerrada:not(.comb-abierta),
+.L2.combinacion.comb-cerrada .combinacion-circle {
+	fill:#F4DDC3;stroke:#F4DDC3;
+}
+
+.L3 {
+	fill:#582210;stroke:#582210;
+}
+.L3 .linea-cerrada,
+.L3 .est-cerrada:not(.comb-abierta),
+.estacion.L3.est-cerrada:not(.comb-abierta),
+.L3.combinacion.comb-cerrada .combinacion-circle {
+	fill:#E4C8C5;stroke:#E4C8C5;
+}
+
+.L4 {
+	fill:#2C3689;stroke:#2C3689;
+}
+.L4 .linea-cerrada,
+.L4 .est-cerrada:not(.comb-abierta),
+.estacion.L4.est-cerrada:not(.comb-abierta),
+.L4.combinacion.comb-cerrada .combinacion-circle {
+	fill:#C6CAE8;stroke:#C6CAE8;
+}
+
+.L4A {
+	fill:#27ABE2;stroke:#27ABE2;
+}
+.L4A .linea-cerrada,
+.L4A .est-cerrada:not(.comb-abierta),
+.estacion.L4A.est-cerrada:not(.comb-abierta),
+.L4A.combinacion.comb-cerrada .combinacion-circle {
+	fill:#B0DFF1;stroke:#B0DFF1;
+}
+
+.L5 {
+	fill:#029447;stroke:#029447;
+}
+.L5 .linea-cerrada,
+.L5 .est-cerrada:not(.comb-abierta),
+.estacion.L5.est-cerrada:not(.comb-abierta),
+.L5.combinacion.comb-cerrada .combinacion-circle {
+	fill:#ADDAB7;stroke:#ADDAB7;
+}
+
+.L6 {
+	fill:#9F5FA6;stroke:#9F5FA6;
+}
+.L6 .linea-cerrada,
+.L6 .est-cerrada:not(.comb-abierta),
+.estacion.L6.est-cerrada:not(.comb-abierta),
+.L6.combinacion.comb-cerrada .combinacion-circle {
+	fill:#D6BBDA;stroke:#D6BBDA;
+}
+
+.hidden {
+	opacity: 0 !important;
+}
+
+.twitter-container {
+	background-color: #ECEDEE;
+}
+.twitter-embed {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 24px;
+}
+.twitter-title {
+	text-align: center;
+	font-size: 2rem;
+	margin-top: 30px;
+	padding-top: 30px;
+	border-top: 1px solid lightgray;
+}
+
+@media print {
+    .no-print, .no-print * {
+        display: none !important;
+    }
+    .svg-container {
+    	width: 100%
+    }
+    body {
+    	margin: 0;
+    }
+    .last-update, .legend-container, .svg-overflower {
+    	margin: 0 auto;
+    }
+}

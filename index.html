@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script type="text/javascript" src="mapametro.js"></script>
+	<script src="https://kit.fontawesome.com/4cb0feb62d.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="mapametro.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300i,400,700&display=swap" rel="stylesheet">
+	<!-- Matomo -->
+	<script type="text/javascript">
+	  var _paq = window._paq || [];
+	  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	  _paq.push(["setCookieDomain", "*.mapametro.cl"]);
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u="//analytics.xor.cl/";
+	    _paq.push(['setTrackerUrl', u+'matomo.php']);
+	    _paq.push(['setSiteId', '5']);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><p><img src="//analytics.xor.cl/matomo.php?idsite=5&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+	<!-- End Matomo Code -->
+</head>
+
+<body>
+	<div class="page-container" id="page-container">
+		<div class="no-print">
+			<h1 class="title">Estado de la red <span class="subtitle">Metro de Santiago</span></h1>
+			<div class="intro-container">
+				<p class="intro">Visualización <strong>no-oficial</strong> del estado de la red del Metro de Santiago.</p>
+				<p class="intro">Su finalidad es entregar información actualizada al usuario común, acorde a la contingencia de la crisis social nacional, considerando cierres por disturbios y eventualidades.</p>
+				<p class="intro">Esta visualización se actualiza manualmente en base a la información publicada en el <a href="https://twitter.com/metrodesantiago">Twitter de Metro de Santiago</a>. No está automatizada ni representa de ninguna forma un medio oficial de comunicación de Metro.</p>
+			</div>
+			<p class="intro credits">Creado por Sebastián Cisneros </p>
+			<p class="intro credits"><a href="https://www.instagram.com/sebastian_cp/"><i class="fab fa-instagram"></i></a> <a href="https://twitter.com/SebaCPhh"><i class="fab fa-twitter"></i></a> <a href="mailto:scisnero@dcc.uchile.cl"><i class="fas fa-envelope"></i></a></p>
+		</div>
+		<p class="last-update" id="last-update"><span class="loading-spinner"></span>Cargando...</p>
+		<div class="legend-container">
+			<div class="legend-section" id="legend-estacion">
+				<p class="legend-title">
+					Estación
+				</p>
+				<div class="legend-items">
+					<div class="legend-item">
+						<svg class="legend-symbol" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 25 25">
+							<g class="estacion LNeutra">
+								<circle class="borde" cx="12.5" cy="12.5" r="9"/>
+								<circle class="relleno" cx="12.5" cy="12.5" r="5.5"/>
+							</g>
+						</svg>
+						<p class="legend-label">Abierta</p>
+					</div>
+					<div class="legend-item">
+						<svg class="legend-symbol" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 25 25">
+							<g class="estacion est-cerrada LNeutra">
+								<circle class="borde" cx="12.5" cy="12.5" r="9"/>
+								<circle class="relleno" cx="12.5" cy="12.5" r="5.5"/>
+								<line class="tachado" x1="17.5" y1="7.5" x2="7.5" y2="17.5"></line>
+							</g>
+						</svg>
+						<p class="legend-label legend-cerrada">Cerrada</p>
+					</div>
+				</div>
+			</div>
+			<div class="legend-section">
+				<p class="legend-title">
+					Combinación
+				</p>
+				<div class="legend-items">
+					<div class="legend-item">
+						<svg class="legend-symbol" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 25 25">
+							<g class="estacion LNeutra">
+								<circle class="borde" cx="50%" cy="50%" r="12"/>
+								<circle class="relleno" cx="50%" cy="50%" r="7"/>
+							</g>
+						</svg>
+						<p class="legend-label">Abierta</p>
+					</div>
+					<div class="legend-item">
+						<svg class="legend-symbol" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 25 25">
+							<g class="estacion LNeutra">
+								<circle class="borde" cx="50%" cy="50%" r="7.5"/>
+								<circle class="relleno" cx="50%" cy="50%" r="5.5"/>
+							</g>
+						</svg>
+						<p class="legend-label">Cerrada</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="svg-overflower">
+			<div class="svg-container">
+				<svg version="1.1" id="svg-map" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 -20 1250 1250" xml:space="preserve">
+				</svg>
+				<svg version="1.1" id="svg-lineas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="-25 -20 1225 1250" xml:space="preserve">
+					<g class="L1" id="L1">
+						<circle class="linea-circle" cx="25" cy="100" r="25"/>
+						<text class="linea-label" text-anchor="middle" x="25" y="111">1</text>
+						<line class="linea linea-cerrada" x1="70" y1="100" x2="70" y2="100"/>
+						<line class="linea" x1="70" y1="100" x2="70" y2="100"/>
+						<line class="linea linea-cerrada" x1="70" y1="100" x2="70" y2="100"/>
+					</g>
+
+
+					<g class="L2" id="L2">
+						<circle class="linea-circle" cx="25" cy="280" r="25"/>
+						<text class="linea-label" text-anchor="middle" x="25" y="291">2</text>
+						<line class="linea linea-cerrada" x1="70" y1="280" x2="70" y2="280"/>
+						<line class="linea" x1="70" y1="280" x2="70" y2="280"/>
+						<line class="linea linea-cerrada" x1="70" y1="280" x2="70" y2="280"/>
+					</g>
+
+
+					<g class="L3" id="L3">
+						<circle class="linea-circle" cx="25" cy="460" r="25"/>
+						<text class="linea-label" text-anchor="middle" x="25" y="471">3</text>
+						<line class="linea linea-cerrada" x1="70" y1="460" x2="70" y2="460"/>
+						<line class="linea" x1="70" y1="460" x2="70" y2="460"/>
+						<line class="linea linea-cerrada" x1="70" y1="460" x2="70" y2="460"/>
+					</g>
+
+
+					<g class="L4" id="L4">
+						<circle class="linea-circle" cx="25" cy="640" r="25"/>
+						<text class="linea-label" text-anchor="middle" x="25" y="651">4</text>
+						<line class="linea linea-cerrada" x1="70" y1="640" x2="70" y2="640"/>
+						<line class="linea" x1="70" y1="640" x2="70" y2="640"/>
+						<line class="linea linea-cerrada" x1="70" y1="640" x2="70" y2="640"/>
+					</g>
+
+
+					<g class="L4A" id="L4A">
+						<circle class="linea-circle" cx="25" cy="820" r="25"/>
+						<text class="linea-label" text-anchor="middle" x="25" y="831">4A</text>
+						<line class="linea linea-cerrada" x1="70" y1="820" x2="70" y2="820"/>
+						<line class="linea" x1="70" y1="820" x2="70" y2="820"/>
+						<line class="linea linea-cerrada" x1="70" y1="820" x2="70" y2="820"/>
+					</g>
+
+
+					<g class="L5" id="L5">
+						<circle class="linea-circle" cx="25" cy="1000" r="25"/>
+						<text class="linea-label" text-anchor="middle" x="25" y="1011">5</text>
+						<line class="linea linea-cerrada" x1="70" y1="1000" x2="70" y2="1000"/>
+						<line class="linea" x1="70" y1="1000" x2="70" y2="1000"/>
+						<line class="linea linea-cerrada" x1="70" y1="1000" x2="70" y2="1000"/>
+					</g>
+
+
+					<g class="L6" id="L6">
+						<circle class="linea-circle" cx="25" cy="1180" r="25"/>
+						<text class="linea-label" text-anchor="middle" x="25" y="1191">6</text>
+						<line class="linea linea-cerrada" x1="70" y1="1180" x2="70" y2="1180"/>
+						<line class="linea" x1="70" y1="1180" x2="70" y2="1180"/>
+						<line class="linea linea-cerrada" x1="70" y1="1180" x2="70" y2="1180"/>
+					</g>
+				</svg>
+				</div>
+			</div>
+		</div>
+		<div class="no-print">
+			<div class="twitter-container">
+				<h2 class="twitter-title">Información oficial de Metro:</h2>
+				<div class="twitter-embed">
+					<a class="twitter-timeline" data-lang="es" data-width="600" data-height="600" data-theme="light" href="https://twitter.com/metrodesantiago?ref_src=twsrc%5Etfw">Tweets by metrodesantiago</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+			</div>
+			<div class="intro-container">
+				<p class="intro">
+					Dedicado con poco amor a todo/as lo/as "diseñadore/as" que roban creatividad y venden trabajo plagiado, y a Publimetro, para que ojalá verifiquen su ética y rigurosidad antes de pagarle a estos "profesionales"
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
