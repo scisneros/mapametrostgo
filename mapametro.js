@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.async = true;
-        script.src = 'data.js?t='+new Date().getUTCMilliseconds();
+        script.src = 'data.js?t='+new Date().valueOf();
         script.addEventListener('load', resolve);
         script.addEventListener('error', () => reject('Error loading script.'));
         script.addEventListener('abort', () => reject('Script loading aborted.'));
