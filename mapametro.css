@@ -8,8 +8,8 @@ body {
 	text-align: center;
 	font-size: 3rem;
 	font-weight: bold;
-    line-height: 0.9em;
-    margin-bottom: 20px;
+	line-height: 0.9em;
+	margin-bottom: 20px;
 }
 .title .subtitle {
 	display: block;
@@ -26,7 +26,7 @@ p.intro {
 }
 
 .intro-container {
-    margin: 0 8px 12px;
+	margin: 0 8px 12px;
 }
 p.intro.credits {
 	font-size: 0.9rem;
@@ -45,72 +45,72 @@ p.intro i:hover {
 
 .loading-spinner {
 	display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-right: 8px;
-    vertical-align: text-bottom;
-    border: .2em solid currentColor;
-    border-right-color: transparent;
-    border-radius: 50%;
-    -webkit-animation: spin .75s linear infinite;
-    animation: spin .75s linear infinite;
+	width: 1em;
+	height: 1em;
+	margin-right: 8px;
+	vertical-align: text-bottom;
+	border: .2em solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	-webkit-animation: spin .75s linear infinite;
+	animation: spin .75s linear infinite;
 }
 @keyframes spin {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
 }
 .last-update {
 	font-size: 1.4rem;
 	text-align: center;
-    color: #00b3ab;
+	color: #00b3ab;
 }
 
 .legend-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
 }
 
 .legend-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 200px;
-    background-color: #ECEDEE;
-    border-radius: 8px;
-    margin: 8px;
-    padding: 16px 8px;
-    box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 200px;
+	background-color: #ECEDEE;
+	border-radius: 8px;
+	margin: 8px;
+	padding: 16px 8px;
+	box-sizing: border-box;
 }
 
 p.legend-title {
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin: 0.3em 0;
-    line-height: 1;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.1rem;
+	margin: 0.3em 0;
+	line-height: 1;
 }
 
 .legend-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 2px 17px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 2px 17px;
 }
 
 p.legend-label {
-    margin: 0;
-    line-height: 1;
+	margin: 0;
+	line-height: 1;
 }
 p.legend-cerrada {
 	color: #848484;
 }
 
 svg.legend-symbol {
-    margin-right: 8px;
-    min-width: 25px;
+	margin-right: 8px;
+	min-width: 25px;
 }
 
 .svg-overflower {
@@ -126,12 +126,6 @@ svg.legend-symbol {
 		width: 1250px;
 	}
 }
-
-/*
-svg .estacion .marcador {  
-    transform-box: fill-box;
-}
-*/
 
 #svg-map {display: none;}
 #svg-lineas {display: block;}
@@ -197,12 +191,12 @@ svg .estacion .marcador {
 	animation-timing-function: linear;
 }
 @keyframes dashOffset {
-  from {stroke-dashoffset: 0;}
-  to {stroke-dashoffset: 100;}
+	from {stroke-dashoffset: 0;}
+	to {stroke-dashoffset: 100;}
 }
 
 .nombre {
-    font-size: 1.075rem;
+	font-size: 1.075rem;
 	fill: #231F20;
 	stroke: none;
 	letter-spacing: -0.7px;
@@ -210,7 +204,7 @@ svg .estacion .marcador {
 	cursor: pointer;
 }
 .nombre.nombre-hover {
-    font-size: 1.3rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 }
 .est-cerrada .nombre {
@@ -221,18 +215,18 @@ svg .estacion .marcador {
 	stroke: none;
 }
 .estacion .combinacion-label {
-    font-size: 14px;
-    font-weight: bold;
-    fill: white;
-    stroke: none;
+	font-size: 14px;
+	font-weight: bold;
+	fill: white;
+	stroke: none;
 }
 
 .estacion .extra-text {
-    font-size: 16px;
-    font-weight: lighter;
-    font-style: italic;
+	font-size: 16px;
+	font-weight: lighter;
+	font-style: italic;
 	letter-spacing: -0.5px;
-    stroke: none;
+	stroke: none;
 }
 
 .LNeutra {
@@ -322,9 +316,9 @@ svg .estacion .marcador {
 .twitter-container {
 	background-color: #ECEDEE;
 	border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    padding: 24px 0;
-    margin-bottom: 24px;
+	border-bottom: 1px solid lightgray;
+	padding: 24px 0;
+	margin-bottom: 24px;
 }
 .twitter-embed {
 	display: flex;
@@ -338,16 +332,16 @@ svg .estacion .marcador {
 }
 
 @media print {
-    .no-print, .no-print * {
-        display: none !important;
-    }
-    .svg-container {
-    	width: 100%
-    }
-    body {
-    	margin: 0;
-    }
-    .last-update, .legend-container, .svg-overflower {
-    	margin: 0 auto;
-    }
+	.no-print, .no-print * {
+		display: none !important;
+	}
+	.svg-container {
+		width: 100%
+	}
+	body {
+		margin: 0;
+	}
+	.last-update, .legend-container, .svg-overflower {
+		margin: 0 auto;
+	}
 }
