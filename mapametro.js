@@ -51,8 +51,6 @@ function initAll() {
 }
 
 function mouseOverEstacion() {
-	const cx = this.getElementsByTagName('circle')[0].getAttribute("cx");
-	const cy = this.getElementsByTagName('circle')[0].getAttribute("cy");
 	const name = this.getElementsByClassName('nombre')[0]
 	const marker = this.getElementsByClassName('marcador')[0]
 	name.classList.add('nombre-hover')
