@@ -126,11 +126,8 @@ svg.legend-symbol {
 		width: 1250px;
 	}
 }
-@media (min-width: 1500px) {
-	.svg-container {
-		width: 1700px;
-	}
-}/*
+
+/*
 svg .estacion .marcador {  
     transform-box: fill-box;
 }
