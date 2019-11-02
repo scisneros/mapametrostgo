@@ -154,6 +154,9 @@ function initCombinaciones() {
 }
 
 function renderCombinacion(estacionDOM, lineaComb, abierta) {
+	linkLineaDOM = document.createElement("a")
+	linkLineaDOM.href = "#"+lineaComb
+	linkLineaDOM.appendChild(estacionDOM)
 	estacionDOM.classList.add("combinacion")
 	estacionDOM.classList.add(lineaComb)
 	const marcadorDOM = estacionDOM.getElementsByClassName("marcador")[0]
