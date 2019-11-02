@@ -154,12 +154,10 @@ function initCombinaciones() {
 }
 
 function renderCombinacion(estacionDOM, lineaComb, abierta) {
-	linkLineaDOM = document.createElement("a")
-	linkLineaDOM.href = "#"+lineaComb
-	linkLineaDOM.appendChild(estacionDOM)
 	estacionDOM.classList.add("combinacion")
 	estacionDOM.classList.add(lineaComb)
 	const marcadorDOM = estacionDOM.getElementsByClassName("marcador")[0]
+	makeLinkTo(marcadorDOM, "#"+lineaComb)
 	const bordeDOM = estacionDOM.getElementsByClassName("borde")[0]
 	const rellenoDOM = estacionDOM.getElementsByClassName("relleno")[0]
 	const estX = parseInt(bordeDOM.getAttribute("cx"))
@@ -181,6 +179,13 @@ function renderCombinacion(estacionDOM, lineaComb, abierta) {
 	}
 	marcadorDOM.appendChild(combCircleDOM)
 	marcadorDOM.appendChild(combLabelDOM)
+}
+
+function makeLinkTo(element, dest) {
+	var link = document.createElementNS("http://www.w3.org/2000/svg", "a")
+	element.parentNode.insertBefore(link, element)
+	link.appendChild(element)
+	link.setAttribute("href", dest)
 }
 
 function initExtras() {
